@@ -1,6 +1,7 @@
-
-using Services;
+using Data.Interfaces;
+using Data.Repositories;
 using Services.Interfaces;
+using Services.Services;
 
 namespace WineCellar
 {
@@ -20,7 +21,12 @@ namespace WineCellar
             #region DependencyInjections
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IWineService, WineService>();
+            builder.Services.AddScoped<IWineRepository, WineRepository>();
+            builder.Services.AddScoped<IUserRepository, UserRepository>();
             #endregion
+            
+
+
 
             var app = builder.Build();
 

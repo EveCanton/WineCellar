@@ -7,7 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WineCellar", "WineCellar\Wi
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Data", "Data\Data.csproj", "{D084ED0A-4B6E-451E-847A-C5588CB5F6DB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Services", "Services\Services.csproj", "{48AED59B-7F34-4AD7-B58B-9E1DAA1BB377}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Services", "Services\Services.csproj", "{48AED59B-7F34-4AD7-B58B-9E1DAA1BB377}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{38D8931E-0A23-4AA7-9E40-92B9F5C48E49}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Elementos de la solución", "Elementos de la solución", "{3D7F96C4-2D4D-40F4-808A-C876DF1F8E42}"
+	ProjectSection(SolutionItems) = preProject
+		readme.md = readme.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +34,10 @@ Global
 		{48AED59B-7F34-4AD7-B58B-9E1DAA1BB377}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{48AED59B-7F34-4AD7-B58B-9E1DAA1BB377}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{48AED59B-7F34-4AD7-B58B-9E1DAA1BB377}.Release|Any CPU.Build.0 = Release|Any CPU
+		{38D8931E-0A23-4AA7-9E40-92B9F5C48E49}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{38D8931E-0A23-4AA7-9E40-92B9F5C48E49}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{38D8931E-0A23-4AA7-9E40-92B9F5C48E49}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{38D8931E-0A23-4AA7-9E40-92B9F5C48E49}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

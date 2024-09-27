@@ -1,5 +1,5 @@
-﻿using Data.Entities;
-using Data.Models;
+﻿using Common.DTOs;
+using Data.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services.Interfaces;

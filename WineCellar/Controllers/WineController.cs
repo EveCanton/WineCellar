@@ -1,5 +1,5 @@
-﻿using Data.Entities;
-using Data.Models;
+﻿using Common.DTOs;
+using Data.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Services;
@@ -27,9 +27,9 @@ namespace WineCellar.Controllers
         }
 
         [HttpGet]
-        public IActionResult GetAllWineAndStock()
+        public IActionResult GetAllWine()
         {
-            var wines = _wineService.GetAllWineAndStock();
+            var wines = _wineService.GetAllWine();
             return Ok(wines);
         }
     }

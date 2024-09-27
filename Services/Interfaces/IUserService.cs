@@ -1,5 +1,5 @@
-﻿using Data.Entities;
-using Data.Models;
+﻿using Common.DTOs;
+using Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +11,6 @@ namespace Services.Interfaces
     public interface IUserService //interfaz para el servicio donde defino los métodos
     {
         //Crear un usuario.
-        User CreateUser(CreateUserDTO dto);
+        void CreateUser(CreateUserDTO dto);
     }
 }
