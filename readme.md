@@ -25,3 +25,21 @@ Método:
 - GET
 Recibirás un 200 OK con una lista de todos los vinos disponibles en el inventario.
 
+
+		4. Autenticar al usuario
+Endpoint: /api/authenticate
+Método:
+- POST
+Recibirás un 200 OK con un el token JWT como string si la autenticación es exitosa.
+
+		5. Obtener Stock por Variedad
+Endpoint: /api/wines/variety/{variety}
+Método:
+- GET
+Recibirás un 200 OK con una lista de todos los vinos disponibles de ésa variedad.
+
+		6. Actualizar el Stock de un Vino
+Endpoint: /api/wines/{wineId}/stock
+Método:
+- PUT
+Recibirás 204 No Content si la actualización fue exitosa.
