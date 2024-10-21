@@ -32,5 +32,35 @@ namespace WineCellar.Controllers
             var wines = _wineService.GetAllWine();
             return Ok(wines);
         }
+
+        [HttpGet("variety/{variety}")]
+        public IActionResult GetStockByVariety(string variety)
+        {
+            // Llamamos al servicio para obtener el stock de la variedad
+            var stock = _wineService.GetStockByVariety(variety);
+
+            if (stock == null || stock.Count == 0)
+                return NotFound($"No se encontro stock para ésa variedad: {variety}");
+
+            return Ok(stock);
+        }
+
+        [HttpPut("{wineId}/stock")]
+        public IActionResult UpdateWineStock(int wineId, [FromBody] UpdateStockWineDTO dto)
+        {
+            try
+            {
+                // Llamamos al servicio para actualizar el stock
+                _wineService.UpdateWineStock(wineId, dto);
+                return NoContent(); // Retornamos 204 No Content si fue exitoso
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message); // Retornamos 404 si no se encontró el vino
+            }
+        }
+
+
+
     }
 }

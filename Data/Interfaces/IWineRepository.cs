@@ -1,4 +1,5 @@
-﻿using Data.Entities;
+﻿using Common.DTOs;
+using Data.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +10,9 @@ namespace Data.Interfaces
 {
     public interface IWineRepository
     {
-        public void AddWine(Wine wine);
+        void AddWine(Wine wine);
         List<Wine> GetAllWines();
+        List<Wine> GetStockByVariety(string variety);
+        void UpdateWineStock(int wineId, int stock);
     }
 }

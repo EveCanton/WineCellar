@@ -23,10 +23,17 @@ namespace Services.Services
         {
             User newUser = new User()
             {
-                Username = dto.Username,
-                Password = dto.Password
+                UserName = dto.Username,
+                Password = dto.Password,
+                Rol = Data.Enum.Rol.User
             };
             _userRepository.AddUser(newUser);
+        }
+
+        public User? ValidateUser(AuthenticationDTO authDTO)
+        {
+            // Usa el método heredado del repositorio para validar el usuario.
+            return _userRepository.GetUserByUsernameAndPassword(authDTO.UserName, authDTO.Password);
         }
     }
 }

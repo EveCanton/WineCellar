@@ -12,5 +12,6 @@ namespace Services.Interfaces
     {
         //Crear un usuario.
         void CreateUser(CreateUserDTO dto);
+        User? ValidateUser(AuthenticationDTO authDto);
     }
 }

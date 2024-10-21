@@ -14,5 +14,7 @@ namespace Services.Interfaces
         void CreateWine(CreateWineDTO dto);
         //Consultar el inventario actual para ver los vinos disponibles y sus cantidades.
         List<GetWineDTO> GetAllWine();
+        List<GetStockDTO> GetStockByVariety(string variety);
+        void UpdateWineStock(int wineId, UpdateStockWineDTO dto);
     }
 }

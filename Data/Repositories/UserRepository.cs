@@ -10,34 +10,26 @@ namespace Data.Repositories
 {
     public class UserRepository : IUserRepository
     {
-        private readonly List<User> Users;
 
-        public UserRepository()
+        private readonly WineCellarContext _context;
+
+        // Inyectamos el DbContext en el constructor
+        public UserRepository(WineCellarContext context)
         {
-            Users = new List<User>();
-
-            User user1 = new User()
-            {
-                Id = 1,
-                Username = "Test",
-                Password = "password"
-            };
-            Users.Add(user1);
-
-            User user2 = new User()
-            {
-                Id = 2,
-                Username = "Test2",
-                Password = "password2"
-            };
-            Users.Add(user2);
+            _context = context;
         }
 
+        // Método para agregar un usuario a la base de datos
         public void AddUser(User user)
         {
-            Users.Add(user);
+             _context.Users.AddAsync(user);
+             _context.SaveChangesAsync(); // Guardar los cambios en la base de datos
         }
-   
+
+        public User? GetUserByUsernameAndPassword(string username, string password)
+        {
+            return _context.Users.FirstOrDefault(p => p.UserName == username && p.Password == password);
+        }
 
     }
     

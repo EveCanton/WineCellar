@@ -1,6 +1,7 @@
 ﻿using Common.DTOs;
 using Data.Entities;
 using Data.Interfaces;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,52 +12,47 @@ namespace Data.Repositories
 {
     public class WineRepository : IWineRepository
     {
-        private readonly List<Wine> Wines;
 
-        public WineRepository()
+        private readonly WineCellarContext _context;
+
+        // Inyectamos el DbContext en el constructor
+        public WineRepository(WineCellarContext context)
         {
-            Wines = new List<Wine>();
-
-            Wine wine1 = new Wine()
-            {
-                Name = "Cabernet Sauvignon",
-                Variety = "Tinto",
-                Year = 2015,
-                Region = "Mendoza",
-                Stock = 150
-            };
-            Wines.Add(wine1);
-
-            Wine wine2 = new Wine()
-            {
-                Name = "Chardonnay",
-                Variety = "Blanco",
-                Year = 2018,
-                Region = "La Rioja",
-                Stock = 200
-            };
-            Wines.Add(wine2);
-
-            Wine wine3 = new Wine()
-            {
-                Name = "Malbec",
-                Variety = "Tinto",
-                Year = 2020,
-                Region = "San Juan",
-                Stock = 80
-            };
-            Wines.Add(wine3);
+            _context = context;
         }
+
+        // Método para agregar un wine a la base de datos
         public void AddWine(Wine wine)
         {
-            Wines.Add(wine);
+            _context.Wines.Add(wine);
+            _context.SaveChangesAsync(); // Guardar los cambios en la base de datos
         }
 
         public List<Wine> GetAllWines()
         {
-            return Wines;
+            return _context.Wines.ToList();
+        }
+
+        public List<Wine> GetStockByVariety(string variety)
+        {
+            // Usamos LINQ para filtrar por variedad y verificar que haya stock disponible
+            return _context.Wines
+                .Where(w => w.Variety.ToLower() == variety.ToLower() && w.Stock > 0)
+                .ToList();
+        }
+        public void UpdateWineStock(int wineId, int stock)
+        {
+            // Buscamos el vino por su ID
+            var wineToUpdate = _context.Wines.FirstOrDefault(w => w.Id == wineId);
+
+            if (wineToUpdate == null)
+                throw new Exception("Vino no encontrado");
+
+            // Actualizamos el stock
+            wineToUpdate.Stock = stock;
+            _context.SaveChanges();
         }
 
 
-    }   
+    }
 }
